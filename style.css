@@ -842,3 +842,120 @@ body {
         width: 100%;
     }
 }
+
+/* تحسينات للشاشات المحمولة */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        padding: 1rem;
+        gap: 2rem;
+        margin-top: 60px;
+    }
+
+    .profile-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .content-area {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .navbar {
+        padding: 0.5rem 0;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 1rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .contact-form {
+        padding: 0 1rem;
+    }
+
+    .social-icons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* تحسينات إضافية للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    .hero {
+        min-height: auto;
+        padding: 4rem 0;
+    }
+
+    .profile-image {
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* تحسين عرض الأيقونات على الشاشات المحمولة */
+@media (max-width: 768px) {
+    .profile-container:hover .profile-social-icon.facebook {
+        transform: translate(-100px, -40px) scale(1);
+    }
+
+    .profile-container:hover .profile-social-icon.twitter {
+        transform: translate(-100px, 0) scale(1);
+    }
+
+    .profile-container:hover .profile-social-icon.instagram {
+        transform: translate(-100px, 40px) scale(1);
+    }
+
+    .profile-container:hover .profile-social-icon.tiktok {
+        transform: translate(-100px, 80px) scale(1);
+    }
+}
