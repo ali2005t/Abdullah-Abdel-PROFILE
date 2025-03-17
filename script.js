@@ -39,25 +39,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// معالجة نموذج الاتصال
-const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // إضافة تأثير للزر عند الضغط
-    const button = this.querySelector('button');
-    button.innerHTML = 'جاري الإرسال...';
-    button.style.opacity = '0.7';
-    
-    // محاكاة إرسال النموذج
-    setTimeout(() => {
-        alert('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.');
-        this.reset();
-        button.innerHTML = 'إرسال';
-        button.style.opacity = '1';
-    }, 1500);
-});
-
 // تأثيرات إضافية للبطاقات عند التحويم
 document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('mousemove', function(e) {
@@ -175,14 +156,6 @@ function isElementInViewport(element) {
     );
 }
 
-// تفعيل النموذج عند إرسال نموذج الاتصال
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    // يمكنك إضافة كود إرسال النموذج هنا
-    alert('تم إرسال رسالتك بنجاح!');
-    this.reset();
-});
-
 // تأثيرات حركية للبطاقات
 document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
@@ -234,3 +207,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// تهيئة EmailJS
+(function() {
+    emailjs.init("wPNXEOLIHTbz5KMOk");
+})();
+
+// معالجة نموذج الاتصال - النسخة النهائية
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // تغيير حالة الزر
+        const button = this.querySelector('button');
+        const originalButtonText = button.textContent;
+        button.textContent = 'جاري الإرسال...';
+        button.disabled = true;
+
+        // إرسال النموذج مباشرة باستخدام sendForm
+        emailjs.sendForm('service_psi402d', 'template_rq990bf', this)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('تم إرسال رسالتك بنجاح!');
+                e.target.reset();
+            }, function(error) {
+                console.log('FAILED...', error);
+                alert('عذراً، حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.');
+            })
+            .finally(function() {
+                button.textContent = originalButtonText;
+                button.disabled = false;
+            });
+    });
+}
