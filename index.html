@@ -2,12 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Abdullah Abdel-Basset Attia Al-Tawkhi</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <!-- القائمة الرئيسية -->
@@ -140,9 +141,9 @@
             </div>
             <div class="contact-content">
                 <form class="contact-form animate__animated animate__fadeInUp animate__delay-1s">
-                    <input type="text" placeholder="الاسم" required>
-                    <input type="email" placeholder="البريد الإلكتروني" required>
-                    <textarea placeholder="رسالتك" required></textarea>
+                    <input type="text" name="user_name" placeholder="الاسم" required>
+                    <input type="email" name="user_email" placeholder="البريد الإلكتروني" required>
+                    <textarea name="message" placeholder="رسالتك" required></textarea>
                     <button type="submit">إرسال</button>
                 </form>
             </div>
